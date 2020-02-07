@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import uuid from 'uuid/v4';
 
 const Form = () => {
     // Set appointment state
@@ -32,10 +33,12 @@ const Form = () => {
         if(pet.trim() === '' || owner.trim() === '' || date.trim() === '' || time.trim() === '' || symptom.trim() === '') {
             return setError(true);
         }
+        // Reset previous validation error message
+        setError(false);
 
         // Set an ID
+        appointment.id = uuid();
 
-        // Create appointment
 
         // Reset form
     }
