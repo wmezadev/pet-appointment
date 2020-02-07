@@ -4,8 +4,6 @@ import Appointment from './components/Appointment';
 
 function App() {
   // Local storage schedule
-
-  // Try get schedule or create it empty
   let initialSchedule = JSON.parse(localStorage.getItem('schedule'));
   if(!initialSchedule) {
     initialSchedule = [];
@@ -16,12 +14,15 @@ function App() {
 
   // useEffect is like componentDidMount and ComponentDidUpdate at the same time
   useEffect(() => {
+    // Try get schedule or create it empty
+    let initialSchedule = JSON.parse(localStorage.getItem('schedule'));
+
     if(initialSchedule) {
       localStorage.setItem('schedule', JSON.stringify(schedule))
     } else {
       localStorage.setItem('schedule', JSON.stringify([]));
     }
-  }, [ schedule, initialSchedule ]);
+  }, [ schedule ]);
 
   // Add appointment to the schedule
   const makeAppointment = appointment => {
