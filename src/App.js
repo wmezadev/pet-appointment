@@ -11,6 +11,12 @@ function App() {
     setSchedule([...schedule, appointment]);
   }
 
+  // Delete appointment by ID
+  const deleteAppointment = id => {
+    const newSchedule = schedule.filter(appointment => appointment.id !== id);
+    setSchedule(newSchedule);
+  }
+
   return (
     <Fragment>
       <h1> Patient Administration </h1>
@@ -28,6 +34,7 @@ function App() {
                 <Appointment
                   key={appointment.id}
                   appointment={appointment}
+                  deleteAppointment={deleteAppointment}
                 />
               ))
             }
