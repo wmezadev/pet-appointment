@@ -8,7 +8,10 @@ const Form = () => {
         date: '',
         time: '',
         symptom: ''
-    })
+    });
+
+    // Error state
+    const [error, setError] = useState(false)
 
     // Update state when inputs changes
     const handleChange = e => {
@@ -24,12 +27,23 @@ const Form = () => {
     // Whenever user submit data
     const submitAppointment = e => {
         e.preventDefault();
-        console.log('submitting...');
+
+        // Validation
+        if(pet.trim() === '' || owner.trim() === '' || date.trim() === '' || time.trim() === '' || symptom.trim() === '') {
+            return setError(true);
+        }
+
+        // Set an ID
+
+        // Create appointment
+
+        // Reset form
     }
-    
+
     return ( 
         <Fragment>
             <h1> Make appointment</h1> 
+            { error ? <p className="alert-error">All fields are required</p> : null }
             <form
                 onSubmit={submitAppointment}
             >
