@@ -21,10 +21,18 @@ const Form = () => {
     // Extract values
     const {pet, owner, date, time, symptom} = appointment;
 
+    // Whenever user submit data
+    const submitAppointment = e => {
+        e.preventDefault();
+        console.log('submitting...');
+    }
+    
     return ( 
         <Fragment>
             <h1> Make appointment</h1> 
-            <form>
+            <form
+                onSubmit={submitAppointment}
+            >
                 <label>Pet's name</label>
                 <input
                     type="text"
