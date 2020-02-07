@@ -11,9 +11,15 @@ const Form = () => {
     })
 
     // Update state when inputs changes
-    const handleChange = () => {
-        console.log('Writing')
+    const handleChange = e => {
+        setAppointment({
+            ...appointment,
+            [e.target.name] :e.target.value
+        })
     }
+
+    // Extract values
+    const {pet, owner, date, time, symptom} = appointment;
 
     return ( 
         <Fragment>
@@ -26,6 +32,7 @@ const Form = () => {
                     className="u-full-width"
                     placeholder="Pet's name"
                     onChange={handleChange}
+                    value={pet}
                 />
                 <label>Owner's name</label>
                 <input
@@ -34,6 +41,7 @@ const Form = () => {
                     className="u-full-width"
                     placeholder="Owner's name"
                     onChange={handleChange}
+                    value={owner}
                 />
                 <label>Date</label>
                 <input
@@ -41,6 +49,7 @@ const Form = () => {
                     name="date"
                     className="u-full-width"
                     onChange={handleChange}
+                    value={date}
                 />
                 <label>Time</label>
                 <input
@@ -48,12 +57,14 @@ const Form = () => {
                     name="time"
                     className="u-full-width"
                     onChange={handleChange}
+                    value={time}
                 />
                 <label>Symptom</label>
                 <textarea
                     name="symptom"
                     className="u-full-width"
                     onChange={handleChange}
+                    value={symptom}
                 ></textarea>
 
                 <button
