@@ -1,10 +1,27 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Form from './components/Form';
 import Appointment from './components/Appointment';
 
 function App() {
-  // Schedule
-  const [schedule, setSchedule] = useState([]);
+  // Local storage schedule
+
+  // Try get schedule or create it empty
+  let initialSchedule = JSON.parse(localStorage.getItem('schedule'));
+  if(!initialSchedule) {
+    initialSchedule = [];
+  }
+
+  // init Schedule state
+  const [schedule, setSchedule] = useState(initialSchedule);
+
+  // useEffect is like componentDidMount and ComponentDidUpdate at the same time
+  useEffect(() => {
+    if(initialSchedule) {
+      localStorage.setItem('schedule', JSON.stringify(schedule))
+    } else {
+      localStorage.setItem('schedule', JSON.stringify([]));
+    }
+  }, [ schedule, initialSchedule ]);
 
   // Add appointment to the schedule
   const makeAppointment = appointment => {
