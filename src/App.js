@@ -17,6 +17,9 @@ function App() {
     setSchedule(newSchedule);
   }
 
+  // Conditional message
+  const title = schedule.length === 0 ? 'No appointments' : 'Schedule';
+
   return (
     <Fragment>
       <h1> Patient Administration </h1>
@@ -28,7 +31,7 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            <h2>Schedule</h2>
+            <h2>{title}</h2>
             {
               schedule.map(appointment => (
                 <Appointment
